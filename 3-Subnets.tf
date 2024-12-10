@@ -28,6 +28,20 @@ resource "aws_subnet" "public-ap-northeast-1c" {
   }
 }
 
+resource "aws_subnet" "public-ap-northeast-1d" {
+  vpc_id                  = aws_vpc.app1.id
+  cidr_block              = "10.190.4.0/24"
+  availability_zone       = "ap-northeast-1d"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name    = "public-ap-northeast-1d"
+    Service = "application1"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+}
+
 
 
 #these are for private
@@ -51,6 +65,19 @@ resource "aws_subnet" "private-ap-northeast-1c" {
 
   tags = {
     Name    = "private-ap-northeast-1c"
+    Service = "application1"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+}
+
+resource "aws_subnet" "private-ap-northeast-1d" {
+  vpc_id            = aws_vpc.app1.id
+  cidr_block        = "10.190.14.0/24"
+  availability_zone = "ap-northeast-1c"
+
+  tags = {
+    Name    = "private-ap-northeast-1d"
     Service = "application1"
     Owner   = "Papi Chulo"
     Planet  = "Uranus"
@@ -117,7 +144,7 @@ resource "aws_subnet" "private-us-east-1c" {
 }
 
 #These are   for  public LONDON
-/*
+
 resource "aws_subnet" "public-eu-west-2a" {
   vpc_id                  = aws_vpc.app3.id
   cidr_block              = "10.192.1.0/24"
@@ -342,13 +369,13 @@ resource "aws_subnet" "private-ap-east-1c" {
 
 #These are   for  public CALIFORNIA
 
-resource "aws_subnet" "public-us-west-1a" {
+resource "aws_subnet" "public-us-west-1b" {
   vpc_id                  = aws_vpc.app7.id
-  cidr_block              = "10.196.1.0/24"
-  availability_zone       = "us-west-1a"
+  cidr_block              = "10.196.2.0/24"
+  availability_zone       = "us-west-1b"
 
   tags = {
-    Name    = "public-us-west-1a"
+    Name    = "public-us-west-1b"
     Service = "application7"
     Owner   = "Papi Chulo"
     Planet  = "Uranus"
@@ -370,13 +397,13 @@ resource "aws_subnet" "public-us-west-1c" {
 
 #these are for private
 
-resource "aws_subnet" "private-us-west-1a" {
+resource "aws_subnet" "private-us-west-1b" {
   vpc_id            = aws_vpc.app7.id
-  cidr_block        = "10.196.11.0/24"
-  availability_zone = "us-west-1a"
+  cidr_block        = "10.196.12.0/24"
+  availability_zone = "us-west-1b"
 
   tags = {
-    Name    = "private-us-west-1a"
+    Name    = "private-us-west-1b"
     Service = "application7"
     Owner   = "Papi Chulo"
     Planet  = "Uranus"
