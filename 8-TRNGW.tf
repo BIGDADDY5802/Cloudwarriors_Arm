@@ -1,118 +1,167 @@
 
+# This Terraform configuration creates a Transit Gateway in the primary region (TOKYO) and attaches a VPC in the primary region (TOKYO) directly to the Transit Gateway.
 
-provider "aws" {
-  region = "us-east-1" # Primary region
+# Create a Transit Gateway in the primary region (TOKYO).
+
+resource "aws_ec2_transit_gateway" "tgw" {
+  description = "Central Transit Gateway for 7 VPCs"
 }
 
-provider "aws" {
-  alias  = "us-west-1"
-  region = "us-west-1" # Secondary region
+#Attach the VPC in the primary region (TOKYO) directly to the Transit Gateway.
+
+data "aws_subnet_ids" "app1" {
+  vpc_id = aws_vpc.app1_id
 }
 
-resource "aws_ec2_transit_gateway" "east_tgw" {
-  description = "Transit Gateway in us-east-1"
-}
-
-resource "aws_ec2_transit_gateway" "west_tgw" {
-  provider    = aws.us-west-1
-  description = "Transit Gateway in us-west-1"
+resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_app1_attachment" {
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  vpc_id             = "aws_vpc.app1.id" # Replace with the VPC ID in First Region  (TOKYO)
+  subnet_ids         = ["data.aws_subnet_ids.app1[1].id", "data.aws_subnet_ids.app1[2].id"] # Replace with subnet IDs
 }
 
 
+#Peering Connection between the VPC in the First region (TOKYO) and the VPC in the Second region (NEW YORK).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Full Example
-
-provider "aws" {
-  region = "us-east-1"
+data "aws_subnet_ids" "app2" {
+  vpc_id = aws_vpc.app2_id
 }
 
-provider "aws" {
-  alias  = "us-west-1"
-  region = "us-west-1"
+resource "aws_vpc_peering_connection" "region_app2_to_tgw" {
+  provider            = aws.us-east-1
+  vpc_id              = "aws_vpc.app2.id" # Replace with Region 2 VPC ID
+  peer_vpc_id         = "aws_vpc.app1.id" # Replace with Primary Region VPC ID
+  #peer_owner_id       = "123456789012" # Your AWS Account ID (All VPCs are in the same account)
+  auto_accept         = false
 }
 
-resource "aws_ec2_transit_gateway" "east_tgw" {
-  description = "Transit Gateway in us-east-1"
+#Peering Connection between the VPC in the primary region (TOKYO) and the VPC in the Third region (LONDON).
+
+data "aws_subnet_ids" "app3" {
+  vpc_id = aws_vpc.app3_id
 }
 
-resource "aws_ec2_transit_gateway" "west_tgw" {
-  provider    = aws.us-west-1
-  description = "Transit Gateway in us-west-1"
+resource "aws_vpc_peering_connection" "region_app3_to_tgw" {
+  provider            = aws.eu-west-2
+  vpc_id              = "aws_vpc.app3.id" # Replace with Region 3 VPC ID
+  peer_vpc_id         = "aws_vpc.app1.id" # Replace with Primary Region VPC ID
+  #peer_owner_id       = "123456789012" # Your AWS Account ID (All VPCs are in the same account)
+  auto_accept         = false
 }
 
-resource "aws_ec2_transit_gateway_peering_attachment" "tgw_peering" {
-  transit_gateway_id      = aws_ec2_transit_gateway.east_tgw.id
-  peer_transit_gateway_id = aws_ec2_transit_gateway.west_tgw.id
-  peer_region             = "us-west-1"
-  peer_account_id         = "YOUR_ACCOUNT_ID"
-  tags = {
-    Name = "east-to-west-peering"
-  }
+#Peering Connection between the VPC in the primary region (TOKYO) and the VPC in the Fourth region (SAO PAULO).
+
+data "aws_subnet_ids" "app4" {
+  vpc_id = aws_vpc.app4_id
 }
 
-resource "aws_ec2_transit_gateway_peering_attachment_accepter" "tgw_peering_accepter" {
-  provider                     = aws.us-west-1
-  transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment.tgw_peering.id
-  tags = {
-    Name = "west-to-east-peering"
-  }
+resource "aws_vpc_peering_connection" "region_app4_to_tgw" {
+  provider            = aws.sa-east-1
+  vpc_id              = "aws_vpc.app4.id" # Replace with Region 4 VPC ID
+  peer_vpc_id         = "aws_vpc.app1.id" # Replace with Primary Region VPC ID
+  #peer_owner_id       = "123456789012" # Your AWS Account ID (All VPCs are in the same account)
+  auto_accept         = false
 }
 
-provider "aws" {
-  region = "ap-northeast-1"
+#Peering Connection between the VPC in the primary region (TOKYO) and the VPC in the Fifth region (AUSTRALIA).
+
+data "aws_subnet_ids" "app5" {
+  vpc_id = aws_vpc.app5_id
 }
 
-provider "aws" {
-  alias  = "us-east-1"
-  region = "us-east-1"
+resource "aws_vpc_peering_connection" "region_app5_to_tgw" {
+  provider            = aws.ap-southeast-2
+  vpc_id              = "aws_vpc.app5.id" # Replace with Region 5 VPC ID
+  peer_vpc_id         = "aws_vpc.app1.id" # Replace with Primary Region VPC ID
+  #peer_owner_id       = "123456789012" # Your AWS Account ID (All VPCs are in the same account)
+  auto_accept         = false
 }
 
-resource "aws_ec2_transit_gateway" "ap-northeast_tgw" {
-  description = "Transit Gateway in ap-northeast-1"
+#Peering Connection between the VPC in the primary region (TOKYO) and the VPC in the Fourth region (HONG KONG).
+
+data "aws_subnet_ids" "app6" {
+  vpc_id = aws_vpc.app6_id
 }
 
-resource "aws_ec2_transit_gateway" "us-east_tgw" {
-  provider    = aws.us-east-1
-  description = "Transit Gateway in us-east-1"
+resource "aws_vpc_peering_connection" "region_app6_to_tgw" {
+  provider            = aws.ap-east-1
+  vpc_id              = "aws_vpc.app6.id" # Replace with Region 6 VPC ID
+  peer_vpc_id         = "aws_vpc.app1.id" # Replace with Primary Region VPC ID
+  #peer_owner_id       = "123456789012" # Your AWS Account ID (All VPCs are in the same account)
+  auto_accept         = false
 }
 
-resource "aws_ec2_transit_gateway_peering_attachment" "tgw_peering" {
-  transit_gateway_id      = aws_ec2_transit_gateway.ap-northeast-1_tgw.id
-  peer_transit_gateway_id = aws_ec2_transit_gateway.us-east-1_tgw.id
-  peer_region             = "us-east-1"
-  peer_account_id         = "YOUR_ACCOUNT_ID"
-  tags = {
-    Name = "ap-northeast-1-to-us-east-1-peering"
-  }
+#Peering Connection between the VPC in the primary region (TOKYO) and the VPC in the Fourth region (CALIFORNIA).
+
+data "aws_subnet_ids" "app7" {
+  vpc_id = aws_vpc.app7_id
 }
 
-resource "aws_ec2_transit_gateway_peering_attachment_accepter" "tgw_peering_accepter" {
-  provider                     = aws.us-east-1
-  transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment.tgw_peering.id
-  tags = {
-    Name = "us-east-1-to-ap-northeast-1-peering"
-  }
+resource "aws_vpc_peering_connection" "region_app7_to_tgw" {
+  provider            = aws.us-west-1
+  vpc_id              = "aws_vpc.app7.id" # Replace with Region 7 VPC ID
+  peer_vpc_id         = "aws_vpc.app1.id" # Replace with Primary Region VPC ID
+  #peer_owner_id       = "123456789012" # Your AWS Account ID (All VPCs are in the same account)
+  auto_accept         = false
 }
 
+
+# Create a route in the VPC in the primary region (TOKYO) to the VPC in the Second region (NEW YORK) via the Transit Gateway.
+
+resource "aws_route" "app1_to_app2_via_tgw" {
+  route_table_id         = "aws_route_table.private.id" # Replace with the VPC Route Table ID
+  destination_cidr_block = "10.191.0.0/16" # Replace with CIDR block of Second Region VPC
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
+
+/*
+resource "aws_ec2_transit_gateway_route_table" "tgw_route_table" {
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
+
+resource "aws_ec2_transit_gateway_route" "region_app2_route" {
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw_route_table.id
+  destination_cidr_block         = "10.191.0.0/16" # Replace with CIDR block of Second Region VPC
+  transit_gateway_attachment_id  = aws_vpc_peering_connection.region_app2_to_tgw.id
+}
+*/
+
+# Create a route in the VPC in the primary region (TOKYO) to the VPC in the Third region (LONDON) via the Transit Gateway.
+
+resource "aws_route" "app1_to_app3_via_tgw" {
+  route_table_id         = "aws_route_table.private.id" # Replace with the VPC Route Table ID
+  destination_cidr_block = "10.192.0.0/16" # Replace with CIDR block of Third Region VPC
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
+
+# Create a route in the VPC in the primary region (TOKYO) to the VPC in the Fourth region (SAO PAULO) via the Transit Gateway.
+
+resource "aws_route" "app1_to_app4_via_tgw" {
+  route_table_id         = "aws_route_table.private.id" # Replace with the VPC Route Table ID
+  destination_cidr_block = "10.193.0.0/16" # Replace with CIDR block of Fourth Region VPC
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
+
+# Create a route in the VPC in the primary region (TOKYO) to the VPC in the Fifth region (AUSTRALIA) via the Transit Gateway.
+
+resource "aws_route" "app1_to_app5_via_tgw" {
+  route_table_id         = "aws_route_table.private.id" # Replace with the VPC Route Table ID
+  destination_cidr_block = "10.194.0.0/16" # Replace with CIDR block of Fifth Region VPC
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
+
+# Create a route in the VPC in the primary region (TOKYO) to the VPC in the Sixth region (HONG KONG) via the Transit Gateway.
+
+resource "aws_route" "app1_to_app6_via_tgw" {
+  route_table_id         = "aws_route_table.private.id" # Replace with the VPC Route Table ID
+  destination_cidr_block = "10.195.0.0/16" # Replace with CIDR block of Sixth Region VPC
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
+
+# Create a route in the VPC in the primary region (TOKYO) to the VPC in the Seventh region (CALIFORNIA) via the Transit Gateway.
+
+resource "aws_route" "app1_to_app7_via_tgw" {
+  route_table_id         = "aws_route_table.private.id" # Replace with the VPC Route Table ID
+  destination_cidr_block = "10.196.0.0/16" # Replace with CIDR block of Seventh Region VPC
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+}
 
