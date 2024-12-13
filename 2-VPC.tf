@@ -1,6 +1,6 @@
 # this  makes  vpc.id which is aws_vpc.app1.id
 resource "aws_vpc" "app1" {
-  provider = aws.first
+  provider = aws.ap-northeast-1
   cidr_block = "10.190.0.0/16"
   
   tags = {
@@ -12,7 +12,7 @@ resource "aws_vpc" "app1" {
 }
 
 resource "aws_vpc" "app2" {
-  provider = aws.second
+  provider = aws.us-east-1
   cidr_block = "10.191.0.0/16"
 
   tags = {
@@ -24,7 +24,7 @@ resource "aws_vpc" "app2" {
 }
 
 resource "aws_vpc" "app3" {
-  provider = aws.third
+  provider = aws.eu-west-2
   cidr_block = "10.192.0.0/16"
 
   tags = {
@@ -36,7 +36,7 @@ resource "aws_vpc" "app3" {
 }
 
 resource "aws_vpc" "app4" {
-  provider = aws.fourth
+  provider = aws.sa-east-1
   cidr_block = "10.193.0.0/16"
 
   tags = {
@@ -48,7 +48,7 @@ resource "aws_vpc" "app4" {
 }
 
 resource "aws_vpc" "app5" {
-  provider = aws.fifth
+  provider = aws.ap-southeast-2
   cidr_block = "10.194.0.0/16"
 
   tags = {
@@ -60,7 +60,7 @@ resource "aws_vpc" "app5" {
 }
 
 resource "aws_vpc" "app6" {
-  provider = aws.sixth
+  provider = aws.ap-east-1
   cidr_block = "10.195.0.0/16"
 
   tags = {
@@ -72,7 +72,7 @@ resource "aws_vpc" "app6" {
 }
 
 resource "aws_vpc" "app7" {
-  provider = aws.seventh
+  provider = aws.ap-east-1
   cidr_block = "10.196.0.0/16"
 
   tags = {
