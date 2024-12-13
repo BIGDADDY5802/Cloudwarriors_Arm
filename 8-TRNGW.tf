@@ -1,46 +1,4 @@
 
-# Define the Terraform provider for the primary region (TOKYO).
-provider "aws" {
-  region = "ap-northeast-1"
-  alias = "ap-northeast-1"
-}
-
-# Define the Terraform provider for the second region (NEW YORK).
-provider "aws" {
-  region = "us-east-1"
-  alias = "us-east-1"
-}
-
-# Define the Terraform provider for the third region (LONDON).
-provider "aws" {
-  region = "eu-west-2"
-  alias = "eu-west-2"
-}
-
-# Define the Terraform provider for the fourth region (SAO PAULO).
-provider "aws" {
-  region = "sa-east-1"
-  alias = "sa-east-1"
-}
-
-# Define the Terraform provider for the fifth region (AUSTRALIA).
-provider "aws" {
-  region = "ap-southeast-2"
-  alias = "ap-southeast-2"
-}
-
-# Define the Terraform provider for the sixth region (HONG KONG).
-provider "aws" {
-  region = "ap-east-1"
-  alias = "ap-east-1"
-}
-
-# Define the Terraform provider for the seventh region (CALIFORNIA).
-provider "aws" {
-  region = "us-west-1"
-  alias = "us-west-1"
-}
-
 # This Terraform configuration creates a Transit Gateway in the primary region (TOKYO) and attaches a VPC in the primary region (TOKYO) directly to the Transit Gateway.
 
 # Create a Transit Gateway in the primary region (TOKYO).
@@ -299,3 +257,5 @@ resource "aws_route" "app7_to_app1_via_tgw" {
   destination_cidr_block = "10.190.0.0/16" # Replace with CIDR block of Primary Region VPC  (TOKYO)
   vpc_peering_connection_id = aws_vpc_peering_connection.region_app7_to_tgw.id  # Replace with VPC Peering Connection ID
 }
+
+
