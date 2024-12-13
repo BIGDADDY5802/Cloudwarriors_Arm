@@ -394,8 +394,8 @@ resource "aws_autoscaling_group" "app3_443_asg" {
   max_size              = 4
   desired_capacity      = 3
   vpc_zone_identifier   = [
-    aws_subnet.private-eu-west-1a.id,
-    aws_subnet.private-eu-west-1c.id
+    aws_subnet.private-eu-west-2a.id,
+    aws_subnet.private-eu-west-2c.id
   ]
   health_check_type          = "ELB"
   health_check_grace_period  = 300
