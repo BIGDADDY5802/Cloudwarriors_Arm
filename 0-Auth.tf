@@ -1,36 +1,36 @@
 provider "aws" {
-  region = var.regions[0]
-  alias = "first"
+  region = "ap-northeast-1"
+  alias = "ap-northeast-1"
 }
 
 provider "aws" {
-  region = var.regions[1]
-  alias = "second" 
+  region = "us-east-1"
+  alias = "us-east-1" 
 }
 
 provider "aws" {
-  region = var.regions[2]
-  alias = "third"
+  region = "eu-west-2"
+  alias = "eu-west-2"
 }
 
 provider "aws" {
-  region = var.regions[3]
-  alias = "fourth"
+  region = "sa-east-1"
+  alias = "sa-east-1"
 }
 
 provider "aws" {
-  region = var.regions[4]
-  alias = "fifth"
+  region = "ap-southeast-2"
+  alias = "ap-southeast-2"
 }
 
 provider "aws" {
-  region = var.regions[5]
-  alias = "sixth"
+  region = "ap-east-1"
+  alias = "ap-east-1"
 }
 
 provider "aws" {
-  region = var.regions[6]
-  alias = "seventh"
+  region = "us-west-1"
+  alias = "us-west-1"
 }
 terraform {
   required_providers {
