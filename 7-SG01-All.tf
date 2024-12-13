@@ -82,6 +82,38 @@ resource "aws_security_group" "app1-sg02-LB01" {
 
 }
 
+
+resource "aws_security_group" "app1-sg03-secure-servers" {
+  name        = "app1-sg03-secure-servers"
+  description = "app1-sg03-secure-servers"
+  vpc_id      = aws_vpc.app1.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app1-sg03-secure-servers"
+    Service = "application1"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
 resource "aws_security_group" "app2-sg01-servers" {
   name        = "app2-sg01-servers"
   description = "app2-sg01-servers"
@@ -166,6 +198,39 @@ resource "aws_security_group" "app2-sg02-LB01" {
 
 }
 
+
+resource "aws_security_group" "app2-sg03-secure-servers" {
+  name        = "app2-sg03-secure-servers"
+  description = "app2-sg03-secure-servers"
+  vpc_id      = aws_vpc.app2.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app2-sg03-secure-servers"
+    Service = "application2"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
+
 resource "aws_security_group" "app3-sg01-servers" {
   name        = "app3-sg01-servers"
   description = "app3-sg01-servers"
@@ -243,6 +308,37 @@ resource "aws_security_group" "app3-sg02-LB01" {
 
   tags = {
     Name    = "app3-sg02-LB01"
+    Service = "application3"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
+resource "aws_security_group" "app3-sg03-secure-servers" {
+  name        = "app3-sg03-secure-servers"
+  description = "app3-sg03-secure-servers"
+  vpc_id      = aws_vpc.app3.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app3-sg03-secure-servers"
     Service = "application3"
     Owner   = "Papi Chulo"
     Planet  = "Uranus"
@@ -334,6 +430,37 @@ resource "aws_security_group" "app4-sg02-LB01" {
 
 }
 
+resource "aws_security_group" "app4-sg03-secure-servers" {
+  name        = "app4-sg03-secure-servers"
+  description = "app4-sg03-secure-servers"
+  vpc_id      = aws_vpc.app4.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app4-sg03-secure-servers"
+    Service = "application4"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
 resource "aws_security_group" "app5-sg01-servers" {
   name        = "app5-sg01-servers"
   description = "app5-sg01-servers"
@@ -411,6 +538,37 @@ resource "aws_security_group" "app5-sg02-LB01" {
 
   tags = {
     Name    = "app5-sg02-LB01"
+    Service = "application5"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
+resource "aws_security_group" "app5-sg03-secure-servers" {
+  name        = "app5-sg03-secure-servers"
+  description = "app5-sg03-secure-servers"
+  vpc_id      = aws_vpc.app5.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app5-sg03-secure-servers"
     Service = "application5"
     Owner   = "Papi Chulo"
     Planet  = "Uranus"
@@ -502,6 +660,37 @@ resource "aws_security_group" "app6-sg02-LB01" {
 
 }
 
+resource "aws_security_group" "app6-sg03-secure-servers" {
+  name        = "app6-sg03-secure-servers"
+  description = "app6-sg03-secure-servers"
+  vpc_id      = aws_vpc.app6.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app6-sg03-secure-servers"
+    Service = "application6"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
 resource "aws_security_group" "app7-sg01-servers" {
   name        = "app7-sg01-servers"
   description = "app7-sg01-servers"
@@ -579,6 +768,37 @@ resource "aws_security_group" "app7-sg02-LB01" {
 
   tags = {
     Name    = "app7-sg02-LB01"
+    Service = "application7"
+    Owner   = "Papi Chulo"
+    Planet  = "Uranus"
+  }
+
+}
+
+resource "aws_security_group" "app7-sg03-secure-servers" {
+  name        = "app7-sg03-secure-servers"
+  description = "app7-sg03-secure-servers"
+  vpc_id      = aws_vpc.app7.id
+
+  ingress {
+    description = "MyHomePage"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name    = "app7-sg03-secure-servers"
     Service = "application7"
     Owner   = "Papi Chulo"
     Planet  = "Uranus"
