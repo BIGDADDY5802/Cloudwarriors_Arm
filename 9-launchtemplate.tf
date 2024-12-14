@@ -1,4 +1,5 @@
 resource "aws_launch_template" "app1_LT" {
+  provider = aws.ap-northeast-1
   name_prefix   = "app1_LT"
   image_id      = "ami-023ff3d4ab11b2525"  
   instance_type = "t2.micro"
@@ -72,6 +73,7 @@ resource "aws_launch_template" "app1_LT" {
 
 
 resource "aws_launch_template" "app1_LT_443" {
+  provider = aws.ap-northeast-1
   name_prefix   = "app1_LT_443"
   image_id      = "ami-023ff3d4ab11b2525"  
   instance_type = "t2.micro"
@@ -143,6 +145,7 @@ resource "aws_launch_template" "app1_LT_443" {
 
 
 resource "aws_launch_template" "app2_LT" {
+  provider = aws.us-east-1
   name_prefix   = "app2_LT"
   image_id      = "ami-0453ec754f44f9a4a"  
   instance_type = "t2.micro"
@@ -216,6 +219,7 @@ resource "aws_launch_template" "app2_LT" {
 
 
 resource "aws_launch_template" "app2_LT_443" {
+  provider = aws.us-east-1
   name_prefix   = "app2_LT_443"
   image_id      = "ami-0453ec754f44f9a4a"  
   instance_type = "t2.micro"
@@ -287,6 +291,7 @@ resource "aws_launch_template" "app2_LT_443" {
 
 
 resource "aws_launch_template" "app3_LT" {
+  provider = aws.eu-west-2
   name_prefix   = "app3_LT"
   image_id      = "ami-0c76bd4bd302b30ec"  
   instance_type = "t2.micro"
@@ -360,6 +365,7 @@ resource "aws_launch_template" "app3_LT" {
 
 
 resource "aws_launch_template" "app3_LT_443" {
+  provider = aws.eu-west-2
   name_prefix   = "app3_LT_443"
   image_id      = "ami-0c76bd4bd302b30ec"  
   instance_type = "t2.micro"
@@ -431,6 +437,7 @@ resource "aws_launch_template" "app3_LT_443" {
 
 
 resource "aws_launch_template" "app4_LT" {
+  provider = aws.sa-east-1
   name_prefix   = "app4_LT"
   image_id      = "ami-0c820c196a818d66a"  
   instance_type = "t2.micro"
@@ -504,6 +511,7 @@ resource "aws_launch_template" "app4_LT" {
 
 
 resource "aws_launch_template" "app4_LT_443" {
+  provider = aws.sa-east-1
   name_prefix   = "app4_LT_443"
   image_id      = "ami-0c820c196a818d66a"  
   instance_type = "t2.micro"
@@ -575,6 +583,7 @@ resource "aws_launch_template" "app4_LT_443" {
 
 
 resource "aws_launch_template" "app5_LT" {
+  provider = aws.ap-southeast-2
   name_prefix   = "app5_LT"
   image_id      = "ami-0146fc9ad419e2cfd"  
   instance_type = "t2.micro"
@@ -648,6 +657,7 @@ resource "aws_launch_template" "app5_LT" {
 
 
 resource "aws_launch_template" "app5_LT_443" {
+  provider = aws.ap-southeast-2
   name_prefix   = "app5_LT_443"
   image_id      = "ami-0146fc9ad419e2cfd"  
   instance_type = "t2.micro"
@@ -719,6 +729,7 @@ resource "aws_launch_template" "app5_LT_443" {
 
 
 resource "aws_launch_template" "app6_LT" {
+  provider = aws.ap-east-1
   name_prefix   = "app6_LT"
   image_id      = "ami-06f707739f2271995"  
   instance_type = "t3.micro"
@@ -791,6 +802,7 @@ resource "aws_launch_template" "app6_LT" {
 
 
 resource "aws_launch_template" "app6_LT_443" {
+  provider = aws.ap-east-1
   name_prefix   = "app6_LT_443"
   image_id      = "ami-06f707739f2271995"  
   instance_type = "t3.micro"
@@ -862,6 +874,7 @@ resource "aws_launch_template" "app6_LT_443" {
 
 
 resource "aws_launch_template" "app7_LT" {
+  provider = aws.us-west-1
   name_prefix   = "app7_LT"
   image_id      = "ami-038bba9a164eb3dc1"  
   instance_type = "t2.micro"
@@ -935,6 +948,7 @@ resource "aws_launch_template" "app7_LT" {
 
 
 resource "aws_launch_template" "app7_LT_443" {
+  provider = aws.us-west-1
   name_prefix   = "app7_LT_443"
   image_id      = "ami-038bba9a164eb3dc1"  
   instance_type = "t2.micro"
