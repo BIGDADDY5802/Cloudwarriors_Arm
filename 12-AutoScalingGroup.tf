@@ -1,6 +1,7 @@
 # Auto Scaling Group for TOKYO VPC
 
 resource "aws_autoscaling_group" "app1_asg" {
+  provider = aws.ap-northeast-1
   name_prefix           = "app1-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -58,6 +59,7 @@ resource "aws_autoscaling_group" "app1_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app1_scaling_policy" {
+  provider = aws.ap-northeast-1
   name                   = "app1-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app1_asg.name
 
@@ -74,12 +76,14 @@ resource "aws_autoscaling_policy" "app1_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app1_asg_attachment" {
+  provider = aws.ap-northeast-1
   autoscaling_group_name = aws_autoscaling_group.app1_asg.name
   alb_target_group_arn   = aws_lb_target_group.app1_tg.arn
 }
 
 
 resource "aws_autoscaling_group" "app1_443_asg" {
+  provider = aws.ap-northeast-1
   name_prefix           = "app1-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -134,6 +138,7 @@ resource "aws_autoscaling_group" "app1_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app1_443_scaling_policy" {
+  provider = aws.ap-northeast-1
   name                   = "app1_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app1_443_asg.name
 
@@ -150,6 +155,7 @@ resource "aws_autoscaling_policy" "app1_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app1_443_asg_attachment" {
+  provider = aws.ap-northeast-1
   autoscaling_group_name = aws_autoscaling_group.app1_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app1_443_tg.arn
 }
@@ -157,6 +163,7 @@ resource "aws_autoscaling_attachment" "app1_443_asg_attachment" {
 # Auto Scaling Group for NEW YORK VPC
 
 resource "aws_autoscaling_group" "app2_asg" {
+  provider = aws.us-east-1
   name_prefix           = "app2-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -213,6 +220,7 @@ resource "aws_autoscaling_group" "app2_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app2_scaling_policy" {
+  provider = aws.us-east-1
   name                   = "app2-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app2_asg.name
 
@@ -229,12 +237,14 @@ resource "aws_autoscaling_policy" "app2_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app2_asg_attachment" {
+  provider = aws.us-east-1
   autoscaling_group_name = aws_autoscaling_group.app2_asg.name
   alb_target_group_arn   = aws_lb_target_group.app2_tg.arn
 }
 
 
 resource "aws_autoscaling_group" "app2_443_asg" {
+  provider = aws.us-east-1
   name_prefix           = "app2-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -288,6 +298,7 @@ resource "aws_autoscaling_group" "app2_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app2_443_scaling_policy" {
+  provider = aws.us-east-1
   name                   = "app2_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app2_443_asg.name
 
@@ -304,6 +315,7 @@ resource "aws_autoscaling_policy" "app2_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app2_443_asg_attachment" {
+  provider = aws.us-east-1
   autoscaling_group_name = aws_autoscaling_group.app2_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app2_443_tg.arn
 }
@@ -311,6 +323,7 @@ resource "aws_autoscaling_attachment" "app2_443_asg_attachment" {
 # Auto Scaling Group for LONDON VPC
 
 resource "aws_autoscaling_group" "app3_asg" {
+  provider = aws.eu-west-2
   name_prefix           = "app3-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -367,6 +380,7 @@ resource "aws_autoscaling_group" "app3_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app3_scaling_policy" {
+  provider = aws.eu-west-2
   name                   = "app3-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app3_asg.name
 
@@ -389,6 +403,7 @@ resource "aws_autoscaling_attachment" "app3_asg_attachment" {
 
 
 resource "aws_autoscaling_group" "app3_443_asg" {
+  provider = aws.eu-west-2
   name_prefix           = "app3-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -442,6 +457,7 @@ resource "aws_autoscaling_group" "app3_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app3_443_scaling_policy" {
+  provider = aws.eu-west-2
   name                   = "app3_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app3_443_asg.name
 
@@ -458,6 +474,7 @@ resource "aws_autoscaling_policy" "app3_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app3_443_asg_attachment" {
+  provider = aws.eu-west-2
   autoscaling_group_name = aws_autoscaling_group.app3_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app3_443_tg.arn
 }
@@ -465,6 +482,7 @@ resource "aws_autoscaling_attachment" "app3_443_asg_attachment" {
 # Auto Scaling Group for SAO PAULO VPC
 
 resource "aws_autoscaling_group" "app4_asg" {
+  provider = aws.sa-east-1
   name_prefix           = "app4-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -521,6 +539,7 @@ resource "aws_autoscaling_group" "app4_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app4_scaling_policy" {
+  provider = aws.sa-east-1
   name                   = "app4-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app2_asg.name
 
@@ -537,12 +556,14 @@ resource "aws_autoscaling_policy" "app4_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app4_asg_attachment" {
+  provider = aws.sa-east-1
   autoscaling_group_name = aws_autoscaling_group.app4_asg.name
   alb_target_group_arn   = aws_lb_target_group.app4_tg.arn
 }
 
 
 resource "aws_autoscaling_group" "app4_443_asg" {
+  provider = aws.sa-east-1
   name_prefix           = "app4-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -596,6 +617,7 @@ resource "aws_autoscaling_group" "app4_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app4_443_scaling_policy" {
+  provider = aws.sa-east-1
   name                   = "app4_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app4_443_asg.name
 
@@ -612,6 +634,7 @@ resource "aws_autoscaling_policy" "app4_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app4_443_asg_attachment" {
+  provider = aws.sa-east-1
   autoscaling_group_name = aws_autoscaling_group.app4_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app4_443_tg.arn
 }
@@ -619,6 +642,7 @@ resource "aws_autoscaling_attachment" "app4_443_asg_attachment" {
 # Auto Scaling Group for AUSTRALIA VPC
 
 resource "aws_autoscaling_group" "app5_asg" {
+  provider = aws.ap-southeast-2
   name_prefix           = "app5-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -675,6 +699,7 @@ resource "aws_autoscaling_group" "app5_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app5_scaling_policy" {
+  provider = aws.ap-southeast-2
   name                   = "app5-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app5_asg.name
 
@@ -691,12 +716,14 @@ resource "aws_autoscaling_policy" "app5_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app5_asg_attachment" {
+  provider = aws.ap-southeast-2
   autoscaling_group_name = aws_autoscaling_group.app5_asg.name
   alb_target_group_arn   = aws_lb_target_group.app5_tg.arn
 }
 
 
 resource "aws_autoscaling_group" "app5_443_asg" {
+  provider = aws.ap-southeast-2
   name_prefix           = "app5-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -750,6 +777,7 @@ resource "aws_autoscaling_group" "app5_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app5_443_scaling_policy" {
+  provider = aws.ap-southeast-2
   name                   = "app5_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app5_443_asg.name
 
@@ -766,6 +794,7 @@ resource "aws_autoscaling_policy" "app5_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app5_443_asg_attachment" {
+  provider = aws.ap-southeast-2
   autoscaling_group_name = aws_autoscaling_group.app5_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app5_443_tg.arn
 }
@@ -773,6 +802,7 @@ resource "aws_autoscaling_attachment" "app5_443_asg_attachment" {
 # Auto Scaling Group for HONG KONG VPC
 
 resource "aws_autoscaling_group" "app6_asg" {
+  provider = aws.ap-east-1
   name_prefix           = "app6-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -829,6 +859,7 @@ resource "aws_autoscaling_group" "app6_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app6_scaling_policy" {
+  provider = aws.ap-east-1
   name                   = "app6-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app6_asg.name
 
@@ -845,12 +876,14 @@ resource "aws_autoscaling_policy" "app6_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app6_asg_attachment" {
+  provider = aws.ap-east-1
   autoscaling_group_name = aws_autoscaling_group.app6_asg.name
   alb_target_group_arn   = aws_lb_target_group.app6_tg.arn
 }
 
 
 resource "aws_autoscaling_group" "app6_443_asg" {
+  provider = aws.ap-east-1
   name_prefix           = "app6-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -904,6 +937,7 @@ resource "aws_autoscaling_group" "app6_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app6_443_scaling_policy" {
+  provider = aws.ap-east-1
   name                   = "app6_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app6_443_asg.name
 
@@ -920,6 +954,7 @@ resource "aws_autoscaling_policy" "app6_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app6_443_asg_attachment" {
+  provider = aws.ap-east-1
   autoscaling_group_name = aws_autoscaling_group.app6_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app6_443_tg.arn
 }
@@ -927,6 +962,7 @@ resource "aws_autoscaling_attachment" "app6_443_asg_attachment" {
 # Auto Scaling Group for CALIFORNIA VPC
 
 resource "aws_autoscaling_group" "app7_asg" {
+  provider = aws.us-west-1
   name_prefix           = "app7-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -983,6 +1019,7 @@ resource "aws_autoscaling_group" "app7_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app7_scaling_policy" {
+  provider = aws.us-west-1
   name                   = "app7-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app2_asg.name
 
@@ -999,12 +1036,14 @@ resource "aws_autoscaling_policy" "app7_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app7_asg_attachment" {
+  provider = aws.us-west-1
   autoscaling_group_name = aws_autoscaling_group.app7_asg.name
   alb_target_group_arn   = aws_lb_target_group.app7_tg.arn
 }
 
 
 resource "aws_autoscaling_group" "app7_443_asg" {
+  provider = aws.us-west-1
   name_prefix           = "app2-auto-scaling-group-"
   min_size              = 1
   max_size              = 4
@@ -1058,6 +1097,7 @@ resource "aws_autoscaling_group" "app7_443_asg" {
 
 # Auto Scaling Policy
 resource "aws_autoscaling_policy" "app7_443_scaling_policy" {
+  provider = aws.us-west-1
   name                   = "app7_443-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.app7_443_asg.name
 
@@ -1074,6 +1114,7 @@ resource "aws_autoscaling_policy" "app7_443_scaling_policy" {
 
 # Enabling instance scale-in protection
 resource "aws_autoscaling_attachment" "app7_443_asg_attachment" {
+  provider = aws.us-west-1
   autoscaling_group_name = aws_autoscaling_group.app7_443_asg.name
   alb_target_group_arn   = aws_lb_target_group.app7_443_tg.arn
 }
