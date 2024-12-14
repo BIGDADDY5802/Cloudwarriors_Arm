@@ -1,5 +1,6 @@
 # Target Group for the Load Balancer for TOKYO VPC
 resource "aws_lb_target_group" "app1_tg" {
+  provider = aws.ap-northeast-1
   name     = "app1-target-group"
   port     = 80
   protocol = "HTTP"
@@ -27,6 +28,7 @@ resource "aws_lb_target_group" "app1_tg" {
 
 
 resource "aws_lb_target_group" "app1_443_tg" {
+  provider = aws.ap-northeast-1
   name     = "app1-443tg"
   port     = 80
   protocol = "HTTP"
@@ -54,6 +56,7 @@ resource "aws_lb_target_group" "app1_443_tg" {
 
 # Target Group for the Load Balancer for NEW YORK VPC
 resource "aws_lb_target_group" "app2_tg" {
+  provider = aws.us-east-1
   name     = "app2-target-group"
   port     = 80
   protocol = "HTTP"
@@ -81,6 +84,7 @@ resource "aws_lb_target_group" "app2_tg" {
 
 
 resource "aws_lb_target_group" "app2_443_tg" {
+  provider = aws.us-east-1
   name     = "app2-443tg"
   port     = 80
   protocol = "HTTP"
@@ -108,6 +112,7 @@ resource "aws_lb_target_group" "app2_443_tg" {
 
 # Target Group for the Load Balancer for LONDON VPC
 resource "aws_lb_target_group" "app3_tg" {
+  provider = aws.eu-west-2
   name     = "app3-target-group"
   port     = 80
   protocol = "HTTP"
@@ -135,6 +140,7 @@ resource "aws_lb_target_group" "app3_tg" {
 
 
 resource "aws_lb_target_group" "app3_443_tg" {
+  provider = aws.eu-west-2
   name     = "app3-443tg"
   port     = 80
   protocol = "HTTP"
@@ -162,6 +168,7 @@ resource "aws_lb_target_group" "app3_443_tg" {
 
 # Target Group for the Load Balancer for SAO PAULO VPC
 resource "aws_lb_target_group" "app4_tg" {
+  provider = aws.sa-east-1
   name     = "app4-target-group"
   port     = 80
   protocol = "HTTP"
@@ -189,6 +196,7 @@ resource "aws_lb_target_group" "app4_tg" {
 
 
 resource "aws_lb_target_group" "app4_443_tg" {
+  provider = aws.sa-east-1
   name     = "app4-443tg"
   port     = 80
   protocol = "HTTP"
@@ -216,6 +224,7 @@ resource "aws_lb_target_group" "app4_443_tg" {
 
 # Target Group for the Load Balancer for AUSTRALIA VPC
 resource "aws_lb_target_group" "app5_tg" {
+  provider = aws.ap-southeast-2
   name     = "app5-target-group"
   port     = 80
   protocol = "HTTP"
@@ -243,6 +252,7 @@ resource "aws_lb_target_group" "app5_tg" {
 
 
 resource "aws_lb_target_group" "app5_443_tg" {
+  provider = aws.ap-southeast-2
   name     = "app5-443tg"
   port     = 80
   protocol = "HTTP"
@@ -270,6 +280,7 @@ resource "aws_lb_target_group" "app5_443_tg" {
 
 # Target Group for the Load Balancer for HONG KONG VPC
 resource "aws_lb_target_group" "app6_tg" {
+  provider = aws.ap-east-1
   name     = "app6-target-group"
   port     = 80
   protocol = "HTTP"
@@ -297,6 +308,7 @@ resource "aws_lb_target_group" "app6_tg" {
 
 
 resource "aws_lb_target_group" "app6_443_tg" {
+  provider = aws.ap-east-1
   name     = "app6-443tg"
   port     = 80
   protocol = "HTTP"
@@ -324,6 +336,7 @@ resource "aws_lb_target_group" "app6_443_tg" {
 
 # Target Group for the Load Balancer for CALIFORNIA VPC
 resource "aws_lb_target_group" "app7_tg" {
+  provider = aws.us-west-1
   name     = "app7-target-group"
   port     = 80
   protocol = "HTTP"
@@ -351,6 +364,7 @@ resource "aws_lb_target_group" "app7_tg" {
 
 
 resource "aws_lb_target_group" "app7_443_tg" {
+  provider = aws.us-west-1
   name     = "app7-443tg"
   port     = 80
   protocol = "HTTP"
