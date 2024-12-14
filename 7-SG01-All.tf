@@ -1,4 +1,5 @@
 resource "aws_security_group" "app1-sg01-servers" {
+  provider = aws.ap-northeast-1
   name        = "app1-sg01-servers"
   description = "app1-sg01-servers"
   vpc_id      = aws_vpc.app1.id
@@ -46,6 +47,7 @@ resource "aws_security_group" "app1-sg01-servers" {
 
 
 resource "aws_security_group" "app1-sg02-LB01" {
+  provider = aws.ap-northeast-1
   name        = "app1-sg02-LB01"
   description = "app1-sg02-LB01"
   vpc_id      = aws_vpc.app1.id
@@ -84,6 +86,7 @@ resource "aws_security_group" "app1-sg02-LB01" {
 
 
 resource "aws_security_group" "app1-sg03-secure-servers" {
+  provider = aws.ap-northeast-1
   name        = "app1-sg03-secure-servers"
   description = "app1-sg03-secure-servers"
   vpc_id      = aws_vpc.app1.id
@@ -115,6 +118,7 @@ resource "aws_security_group" "app1-sg03-secure-servers" {
 }
 
 resource "aws_security_group" "app2-sg01-servers" {
+  provider = aws.us-east-1
   name        = "app2-sg01-servers"
   description = "app2-sg01-servers"
   vpc_id      = aws_vpc.app2.id
@@ -162,6 +166,7 @@ resource "aws_security_group" "app2-sg01-servers" {
 
 
 resource "aws_security_group" "app2-sg02-LB01" {
+  provider = aws.us-east-1
   name        = "app2-sg02-LB01"
   description = "app2-sg02-LB01"
   vpc_id      = aws_vpc.app2.id
@@ -200,6 +205,7 @@ resource "aws_security_group" "app2-sg02-LB01" {
 
 
 resource "aws_security_group" "app2-sg03-secure-servers" {
+  provider = aws.us-east-1
   name        = "app2-sg03-secure-servers"
   description = "app2-sg03-secure-servers"
   vpc_id      = aws_vpc.app2.id
@@ -232,6 +238,7 @@ resource "aws_security_group" "app2-sg03-secure-servers" {
 
 
 resource "aws_security_group" "app3-sg01-servers" {
+  provider = aws.eu-west-2
   name        = "app3-sg01-servers"
   description = "app3-sg01-servers"
   vpc_id      = aws_vpc.app3.id
@@ -279,6 +286,7 @@ resource "aws_security_group" "app3-sg01-servers" {
 
 
 resource "aws_security_group" "app3-sg02-LB01" {
+  provider = aws.eu-west-2
   name        = "app3-sg02-LB01"
   description = "app3-sg02-LB01"
   vpc_id      = aws_vpc.app3.id
@@ -316,6 +324,7 @@ resource "aws_security_group" "app3-sg02-LB01" {
 }
 
 resource "aws_security_group" "app3-sg03-secure-servers" {
+  provider = aws.eu-west-2
   name        = "app3-sg03-secure-servers"
   description = "app3-sg03-secure-servers"
   vpc_id      = aws_vpc.app3.id
@@ -347,6 +356,7 @@ resource "aws_security_group" "app3-sg03-secure-servers" {
 }
 
 resource "aws_security_group" "app4-sg01-servers" {
+  provider = aws.sa-east-1
   name        = "app4-sg01-servers"
   description = "app4-sg01-servers"
   vpc_id      = aws_vpc.app4.id
@@ -394,6 +404,7 @@ resource "aws_security_group" "app4-sg01-servers" {
 
 
 resource "aws_security_group" "app4-sg02-LB01" {
+  provider = aws.sa-east-1
   name        = "app4-sg02-LB01"
   description = "app4-sg02-LB01"
   vpc_id      = aws_vpc.app4.id
@@ -431,6 +442,7 @@ resource "aws_security_group" "app4-sg02-LB01" {
 }
 
 resource "aws_security_group" "app4-sg03-secure-servers" {
+  provider = aws.sa-east-1
   name        = "app4-sg03-secure-servers"
   description = "app4-sg03-secure-servers"
   vpc_id      = aws_vpc.app4.id
@@ -462,6 +474,7 @@ resource "aws_security_group" "app4-sg03-secure-servers" {
 }
 
 resource "aws_security_group" "app5-sg01-servers" {
+  provider = aws.ap-southeast-2
   name        = "app5-sg01-servers"
   description = "app5-sg01-servers"
   vpc_id      = aws_vpc.app5.id
@@ -509,6 +522,7 @@ resource "aws_security_group" "app5-sg01-servers" {
 
 
 resource "aws_security_group" "app5-sg02-LB01" {
+  provider = aws.ap-southeast-2
   name        = "app5-sg02-LB01"
   description = "app5-sg02-LB01"
   vpc_id      = aws_vpc.app5.id
@@ -546,6 +560,7 @@ resource "aws_security_group" "app5-sg02-LB01" {
 }
 
 resource "aws_security_group" "app5-sg03-secure-servers" {
+  provider = aws.ap-southeast-2
   name        = "app5-sg03-secure-servers"
   description = "app5-sg03-secure-servers"
   vpc_id      = aws_vpc.app5.id
@@ -577,6 +592,7 @@ resource "aws_security_group" "app5-sg03-secure-servers" {
 }
 
 resource "aws_security_group" "app6-sg01-servers" {
+  provider = aws.ap-east-1
   name        = "app6-sg01-servers"
   description = "app6-sg01-servers"
   vpc_id      = aws_vpc.app6.id
@@ -624,6 +640,7 @@ resource "aws_security_group" "app6-sg01-servers" {
 
 
 resource "aws_security_group" "app6-sg02-LB01" {
+  provider = aws.ap-east-1
   name        = "app6-sg02-LB01"
   description = "app6-sg02-LB01"
   vpc_id      = aws_vpc.app6.id
@@ -661,6 +678,7 @@ resource "aws_security_group" "app6-sg02-LB01" {
 }
 
 resource "aws_security_group" "app6-sg03-secure-servers" {
+  provider = aws.ap-east-1
   name        = "app6-sg03-secure-servers"
   description = "app6-sg03-secure-servers"
   vpc_id      = aws_vpc.app6.id
@@ -692,6 +710,7 @@ resource "aws_security_group" "app6-sg03-secure-servers" {
 }
 
 resource "aws_security_group" "app7-sg01-servers" {
+  provider = aws.us-west-1
   name        = "app7-sg01-servers"
   description = "app7-sg01-servers"
   vpc_id      = aws_vpc.app7.id
@@ -739,6 +758,7 @@ resource "aws_security_group" "app7-sg01-servers" {
 
 
 resource "aws_security_group" "app7-sg02-LB01" {
+  provider = aws.us-west-1
   name        = "app7-sg02-LB01"
   description = "app7-sg02-LB01"
   vpc_id      = aws_vpc.app7.id
@@ -776,6 +796,7 @@ resource "aws_security_group" "app7-sg02-LB01" {
 }
 
 resource "aws_security_group" "app7-sg03-secure-servers" {
+  provider = aws.us-west-1
   name        = "app7-sg03-secure-servers"
   description = "app7-sg03-secure-servers"
   vpc_id      = aws_vpc.app7.id
