@@ -1,5 +1,6 @@
 # Load Balancer for TOKYO VPC
 resource "aws_lb" "app1_alb" {
+  provider = aws.ap-northeast-1
   name               = "app1-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -21,6 +22,7 @@ resource "aws_lb" "app1_alb" {
 }
 
 resource "aws_lb_listener" "http" {
+  provider = aws.ap-northeast-1
   load_balancer_arn = aws_lb.app1_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -39,6 +41,7 @@ data "aws_acm_certificate" "cert" {
 
 
 resource "aws_lb_listener" "https" {
+  provider = aws.ap-northeast-1
   load_balancer_arn = aws_lb.app1_alb.arn
   port              = 443
   protocol          = "HTTPS"
@@ -61,6 +64,7 @@ output "lb_dns_name" {
 
 # Load Balancer for NEW YORK VPC
 resource "aws_lb" "app2_alb" {
+  provider = aws.us-east-1
   name               = "app2-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -81,6 +85,7 @@ resource "aws_lb" "app2_alb" {
 }
 
 resource "aws_lb_listener" "http2" {
+  provider = aws.us-east-1
   load_balancer_arn = aws_lb.app2_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -99,6 +104,7 @@ data "aws_acm_certificate" "cert2" {
 
 
 resource "aws_lb_listener" "https2" {
+  provider = aws.us-east-1
   load_balancer_arn = aws_lb.app2_alb.arn
   port              = 443
   protocol          = "HTTPS"
@@ -120,6 +126,7 @@ output "lb_dns_name2" {
 
 # Load Balancer for LONDON VPC
 resource "aws_lb" "app3_alb" {
+  provider = aws.eu-west-2
   name               = "app3-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -140,6 +147,7 @@ resource "aws_lb" "app3_alb" {
 }
 
 resource "aws_lb_listener" "http3" {
+  provider = aws.eu-west-2
   load_balancer_arn = aws_lb.app3_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -158,6 +166,7 @@ data "aws_acm_certificate" "cert3" {
 
 
 resource "aws_lb_listener" "https3" {
+  provider = aws.eu-west-2
   load_balancer_arn = aws_lb.app3_alb.arn
   port              = 443
   protocol          = "HTTPS"
@@ -179,6 +188,7 @@ output "lb_dns_name3" {
 
 # Load Balancer for SAO PAULO VPC
 resource "aws_lb" "app4_alb" {
+  provider = aws.sa-east-1
   name               = "app4-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -199,6 +209,7 @@ resource "aws_lb" "app4_alb" {
 }
 
 resource "aws_lb_listener" "http4" {
+  provider = aws.sa-east-1
   load_balancer_arn = aws_lb.app4_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -217,6 +228,7 @@ data "aws_acm_certificate" "cert4" {
 
 
 resource "aws_lb_listener" "https4" {
+  provider = aws.sa-east-1
   load_balancer_arn = aws_lb.app4_alb.arn
   port              = 443
   protocol          = "HTTPS"
@@ -238,6 +250,7 @@ output "lb_dns_name4" {
 
 # Load Balancer for AUSTRALIA VPC
 resource "aws_lb" "app5_alb" {
+  provider = aws.ap-southeast-2
   name               = "app2-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -258,6 +271,7 @@ resource "aws_lb" "app5_alb" {
 }
 
 resource "aws_lb_listener" "http5" {
+  provider = aws.ap-southeast-2
   load_balancer_arn = aws_lb.app5_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -276,6 +290,7 @@ data "aws_acm_certificate" "cert5" {
 
 
 resource "aws_lb_listener" "https5" {
+  provider = aws.ap-southeast-2
   load_balancer_arn = aws_lb.app5_alb.arn
   port              = 443
   protocol          = "HTTPS"
@@ -297,6 +312,7 @@ output "lb_dns_name5" {
 
 # Load Balancer for HONG KONG VPC
 resource "aws_lb" "app6_alb" {
+  provider = aws.ap-east-1
   name               = "app6-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -317,6 +333,7 @@ resource "aws_lb" "app6_alb" {
 }
 
 resource "aws_lb_listener" "http6" {
+  provider = aws.ap-east-1
   load_balancer_arn = aws_lb.app6_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -335,6 +352,7 @@ data "aws_acm_certificate" "cert6" {
 
 
 resource "aws_lb_listener" "https6" {
+  provider = aws.ap-east-1
   load_balancer_arn = aws_lb.app6_alb.arn
   port              = 443
   protocol          = "HTTPS"
@@ -356,6 +374,7 @@ output "lb_dns_name6" {
 
 # Load Balancer for CALIFORNIA VPC
 resource "aws_lb" "app7_alb" {
+  provider = aws.us-west-1
   name               = "app7-load-balancer"
   internal           = false
   load_balancer_type = "application"
@@ -376,6 +395,7 @@ resource "aws_lb" "app7_alb" {
 }
 
 resource "aws_lb_listener" "http7" {
+  provider = aws.us-west-1
   load_balancer_arn = aws_lb.app7_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -394,6 +414,7 @@ data "aws_acm_certificate" "cert7" {
 
 
 resource "aws_lb_listener" "https7" {
+  provider = aws.us-west-1
   load_balancer_arn = aws_lb.app7_alb.arn
   port              = 443
   protocol          = "HTTPS"
