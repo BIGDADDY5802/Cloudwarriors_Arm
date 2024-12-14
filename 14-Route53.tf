@@ -7,6 +7,7 @@ data "aws_route53_zone" "main" {
 # TOKYO VPC
 
 resource "aws_route53_record" "www" {
+  provider = aws.ap-northeast-1
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
@@ -21,6 +22,7 @@ resource "aws_route53_record" "www" {
 # NEW YORK VPC
 
 resource "aws_route53_record" "www2" {
+  provider = aws.us-east-1
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
@@ -35,6 +37,7 @@ resource "aws_route53_record" "www2" {
 # LONDON VPC
 
 resource "aws_route53_record" "www3" {
+  provider = aws.eu-west-2
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
@@ -49,6 +52,7 @@ resource "aws_route53_record" "www3" {
 # SAO PAULO VPC
 
 resource "aws_route53_record" "www4" {
+  provider = aws.sa-east-1
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
@@ -63,6 +67,7 @@ resource "aws_route53_record" "www4" {
 # AUSTRALIA VPC
 
 resource "aws_route53_record" "www5" {
+  provider = aws.ap-southeast-2
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
@@ -77,6 +82,7 @@ resource "aws_route53_record" "www5" {
 # HONG KONG VPC
 
 resource "aws_route53_record" "www6" {
+  provider = aws.ap-east-1
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
@@ -88,9 +94,10 @@ resource "aws_route53_record" "www6" {
   }
 }
 
-# TOKYO VPC
+# CALIFORNIA VPC
 
 resource "aws_route53_record" "www7" {
+  provider = aws.us-west-1
   zone_id = data.aws_route53_zone.main.zone_id
   name    = "jrpllc.link"
   type    = "A"
